@@ -1,0 +1,156 @@
+@use "../styles/variables.scss" as v;
+
+.header{
+    height: v.$header-height;
+    padding: 0 2rem;
+    transition: all 0.3s ease;
+
+    &.light {
+        color: v.$link-color-light;
+        background-color: v.$header-bg-light;
+
+        a:hover {
+            background-color: v.$bg-color-link-light;
+        }
+    }
+    
+    &.dark {
+        color: v.$link-color-dark;
+        background-color: v.$header-bg-dark;
+
+        a:hover {
+            background-color: v.$bg-color-link-dark;
+        }
+    }
+
+    @include v.breakpoint(md) {
+        position: fixed;
+        width: 100%;
+        height: v.$header-height-mobile;
+        margin-bottom: 10rem;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1920px;
+        margin: 0 auto;
+        height: 100%;
+
+        &__logo {
+            margin-right: 3rem;
+            z-index: 10;
+        }
+
+        &__nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex: 1;
+            
+            &__main {
+                display: flex;
+                align-items: center;
+
+                li:first-child {
+                    padding-right: 2rem;
+                    @include v.breakpoint(md) {
+                        padding-right: 0;
+                    }
+                }
+
+                span {
+                    position: relative;
+                    cursor: pointer;
+
+                    &:hover {
+                        & + ul {
+                            transform: rotateX(0);
+                        }
+                    }
+                }
+
+                &__submenu {
+                    background-color: v.$sub-menu-bg;
+                    padding: 0.8rem;
+                    border-radius: v.$sub-menu-border-radius;
+                    position: absolute;
+                    width: max-content;
+                    transform: rotateX(-90deg);
+                    transform-origin: top center;
+                    transition: transform 0.3s;
+                    li {
+                        padding: 0;
+                        &:not(:last-child) {
+                            margin-bottom: 0.6rem;
+                        }
+                    }
+                    &:hover {
+                        transform: rotateX(0);
+                    }
+                }
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                    padding: 0.4rem;
+                    border-radius: 0.5rem;
+                    transition: background 0.1s;
+                }
+
+                @include v.breakpoint(md) {
+                    flex-direction: column;
+                    padding-top: 1.5rem;
+                    li{
+                        &:not(:last-child)  {
+                            padding-bottom: 1.5rem;
+                        }
+                    };
+                }
+            }
+
+            &__language {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                label {
+                    padding-bottom: 1rem;
+                }
+            }
+
+            @include v.breakpoint(md) {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                right: 100%;
+                width: 100vw;
+                height: 100vh;
+                flex-direction: column;
+                padding-top: v.$header-height;
+                padding-bottom: 2rem;
+                justify-content: space-between;
+                transition: 0.2s ease transform;
+                
+                &.isActive {
+                    transform: translate(100%);
+                }
+
+                &.light {
+                    background-color: rgba(v.$header-bg-light, 0.9);            
+                }
+                &.dark {
+                    background-color: rgba(v.$header-bg-dark, 0.9);                               
+                }
+            }
+        }
+
+        &__toggle {
+            display: none;
+            @include v.breakpoint(md) {
+                display: block;
+                z-index: 10;
+                font-size: 2rem;
+            }
+        }
+    }
+}

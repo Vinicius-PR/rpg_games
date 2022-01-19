@@ -1,0 +1,23 @@
+@use "./variables.scss" as v;
+
+.container {
+    max-width: 1920px;
+    padding: 2rem;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+
+    
+    &.light {
+        color: v.$color-text-light;
+        background-color: v.$bg-color-body-light;
+    }
+
+    &.dark {
+        color: v.$color-text-dark;
+        background-color: v.$bg-color-body-dark;
+    }
+
+    @include v.breakpoint(md) {
+        padding-top: calc(v.$header-height-mobile + 1rem);
+    }
+}

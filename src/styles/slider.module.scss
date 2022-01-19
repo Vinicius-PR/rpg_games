@@ -1,0 +1,56 @@
+@use "./variables.scss" as v;
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: v.$switch-width;
+    height: v.$switch-height;
+    margin-top: 0.9rem;
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked + .switch__slider::before{
+            transform: translate(v.$slider-transform);
+        }
+
+        &:checked + .switch__slider {
+            background-color: v.$bg-color-checked;
+        }
+    }
+
+    &__slider {
+        position: absolute;
+        cursor: pointer;
+
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: v.$bg-color-unchecked;
+
+        transition: 0.3s;
+        border-radius: 1.9rem;
+        
+        &::before {
+            position: absolute;
+            content: "";
+            height: v.$slider-height-width;
+            width: v.$slider-height-width;
+            bottom: v.$slider-offset-left-botton;
+            left: v.$slider-offset-left-botton;
+            background-color: v.$color-slider;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+    }
+    
+}

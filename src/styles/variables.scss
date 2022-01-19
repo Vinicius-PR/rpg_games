@@ -1,0 +1,41 @@
+//color DARK MODE
+$link-color-dark: #f5edcf;
+$header-bg-dark: #0c0a01;
+$bg-color-link-dark: #7c6a1b;
+$color-text-dark: #ccc;
+$bg-color-body-dark: rgba($header-bg-dark, 0.9);
+
+//color LIGHT MODE
+$link-color-light: #0c0a01;
+$header-bg-light: #c2bba6;
+$bg-color-link-light: #c4ac43;
+$color-text-light: rgb(0, 0, 0);
+$bg-color-body-light: rgba($header-bg-light, 0.1);
+
+
+//Slider measurements and colors
+$switch-height: 1.5rem;
+$switch-width: 3.5rem;
+$slider-height-width: 1.05rem;
+$slider-offset-left-botton: calc(($switch-height - $slider-height-width) / 2);
+$slider-transform: calc($switch-width - 2 * $slider-offset-left-botton - $slider-height-width);
+$bg-color-unchecked: #d8d05f;
+$bg-color-checked: #3a3a36;
+$color-slider: #f5f1e5;
+
+//Header
+$header-height: 6rem;
+$header-height-mobile: 4rem;
+$sub-menu-bg: #a09a69;
+$sub-menu-border-radius: 1rem;
+
+
+//***************  Utilities ***************//
+
+@mixin breakpoint($point) {
+    @if($point == md) {
+        @media(max-width: 768px) {
+            @content;
+        }
+    }
+}
